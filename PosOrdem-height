@@ -26,16 +26,23 @@ class BinaryTree:
     def postorder_traversal(self, node=None):
         if node is None:
             node = self.root
-        #FAZER
+        if node.left:
+            self.postorder_traversal(node.left)
+        if node.right:
+            self.postorder_traversal(node.right)
+        print(node)
     
     def height(self, node=None):
         if node is None:
             node = self.root
         hleft = 0
         hright = 0
-        #FAZER
-
-        
+        if node.left:
+            hleft = self.height(node.left)
+        if node.right:
+            hright = self.height(node.right)
+        return 1 + max(hleft, hright)
+    
 
 def example_tree():
     tree = BinaryTree()
